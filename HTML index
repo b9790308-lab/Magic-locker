@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magic Vault</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script type="text/javascript" src="https://sdk.start.io/startapp-sdk.js"></script>
+<script type="text/javascript">
+    var sdk = new StartAppSDK({ appId: "204869829" });
+    function showAd() {
+        sdk.showInterstitial();
+    }
+</script>
+<style>
+  :root { --gold: #d4af37; --gold-dark: #b8860b; }
+  body { background: #0a0a0a; color: var(--gold); font-family: sans-serif; }
+  .gold-border { border: 1px solid var(--gold); }
+  .gold-btn { background: var(--gold); color: #000; font-weight: 700; padding: 10px 20px; cursor: pointer; }
+</style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen">
+
+  <h1 class="text-3xl font-bold mb-8">Magic Vault</h1>
+  
+  <div class="otp-wrap flex gap-2 mb-6">
+    <input type="password" id="pin" class="bg-black border border-gold p-4 text-center text-2xl w-full max-w-xs" placeholder="Enter 6-digit PIN">
+  </div>
+
+  <button class="gold-btn" onclick="verifyAndShowAd()">Unlock Vault</button>
+
+  <script>
+    function verifyAndShowAd() {
+      const pin = document.getElementById("pin").value;
+      if (pin === "222222") {
+        // विज्ञापन दिखाएं
+        showAd();
+        // विज्ञापन के बाद डैशबोर्ड पर भेजें
+        setTimeout(() => {
+            window.location.href = "dashboard.html"; 
+        }, 1500);
+      } else {
+        alert("Wrong PIN!");
+      }
+    }
+  </script>
+</body>
+</html>
